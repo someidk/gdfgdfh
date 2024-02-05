@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import os
-import http.server
-import socketserver
 import logging
+from flask import Flask
 from colorama import Fore
 from TwitchChannelPointsMiner import TwitchChannelPointsMiner
 from TwitchChannelPointsMiner.logger import LoggerSettings, ColorPalette
@@ -92,8 +91,10 @@ twitch_miner.mine(
 ]) 
 
 
-port = 80
-Handler = http.server.SimpleHTTPRequestHandler
+app = Flask(__name__)
 
-with socketserver.TCPServer(("", port), Handler) as httpd:
-    httpd.serve_forever()
+@app.route('/')
+def hello_world():
+    return 'I\'m alive'
+
+app.run(port=8080)
