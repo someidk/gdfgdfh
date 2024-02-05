@@ -2,7 +2,8 @@
 
 import os
 import logging
-from flask import Flask
+from flask import Flask, render_template
+from threading import Threads
 from colorama import Fore
 from TwitchChannelPointsMiner import TwitchChannelPointsMiner
 from TwitchChannelPointsMiner.logger import LoggerSettings, ColorPalette
@@ -94,7 +95,12 @@ twitch_miner.mine(
 app = Flask(__name__)
 
 @app.route('/')
-def hello_world():
-    return 'I\'m alive'
-
-app.run(port=8080)
+def index():
+    return 'Alive'
+    
+def run():
+    app.run(host=0.0.0.0, port=8080)
+    
+def keep_alive():
+    t = Thread(target=run)
+    t.start()
