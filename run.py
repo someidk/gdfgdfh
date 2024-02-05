@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import keep_replit_alive
 import os
+import http.server
+import socketserver
 import logging
 from colorama import Fore
 from TwitchChannelPointsMiner import TwitchChannelPointsMiner
@@ -81,7 +82,6 @@ twitch_miner = TwitchChannelPointsMiner(
 
 #twitch_miner.analytics(host="0.0.0.0", port=8080, refresh=5, days_ago=7)   # Start the Analytics web-server
 
-keep_replit_alive.keep_alive()
 
 twitch_miner.mine(
 [
@@ -90,3 +90,10 @@ twitch_miner.mine(
     Streamer("Alois_NL", settings=StreamerSettings(make_predictions=True  , follow_raid=True ,                     watch_streak=True , bet=BetSettings(strategy=Strategy.SMART      , percentage=5 , stealth_mode=False, percentage_gap=20 , max_points=2000 , filter_condition=FilterCondition(by=OutcomeKeys.TOTAL_USERS,             where=Condition.LTE,  value=800 ) ) ))
 
 ]) 
+
+
+port = 80
+Handler = http.server.SimpleHTTPRequestHandler
+
+with socketserver.TCPServer(("", port), Handler) as httpd:
+    httpd.serve_forever()
