@@ -14,6 +14,23 @@ from TwitchChannelPointsMiner.classes.Settings import Priority, Events, Follower
 from TwitchChannelPointsMiner.classes.entities.Bet import Strategy, BetSettings, Condition, OutcomeKeys, FilterCondition, DelayMode
 from TwitchChannelPointsMiner.classes.entities.Streamer import Streamer, StreamerSettings
 
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return 'Alive'
+    
+def run():
+    app.run(host='0.0.0.0', port=10000)
+    
+def keep_alive():
+    t = Thread(target=run)
+    t.start()
+
+if __name__ == "__main__":
+    keep_alive()
+
+
 twitch_miner = TwitchChannelPointsMiner(
     username = os.environ['username'],
     password = os.environ['password'],           # If no password will be provided, the script will ask interactively
@@ -89,18 +106,3 @@ twitch_miner.mine(
     Streamer("1Adrianaries1", settings=StreamerSettings(make_predictions=True , follow_raid=True  , claim_drops=True ,                     bet=BetSettings(strategy=Strategy.SMART , percentage=5 , stealth_mode=True, percentage_gap=20 , max_points=1500  , filter_condition=FilterCondition(by=OutcomeKeys.TOTAL_USERS,     where=Condition.LTE, value=800 ) ) ))
 ]) 
 
-
-app = Flask(__name__)
-
-@app.route('/')
-def index():
-    return 'Alive'
-    
-def run():
-    app.run(host='0.0.0.0', port=10000)
-    
-def keep_alive():
-    t = Thread(target=run)
-    t.start()
-
-keep_alive()
