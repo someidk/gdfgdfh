@@ -3,7 +3,7 @@
 import os
 import logging
 from flask import Flask, render_template
-from threading import Threads
+from threading import Thread
 from colorama import Fore
 from TwitchChannelPointsMiner import TwitchChannelPointsMiner
 from TwitchChannelPointsMiner.logger import LoggerSettings, ColorPalette
