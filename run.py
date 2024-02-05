@@ -86,9 +86,7 @@ twitch_miner = TwitchChannelPointsMiner(
 twitch_miner.mine(
 [
     Streamer("NanahiraLover", settings=StreamerSettings(make_predictions=True  , follow_raid=False , claim_drops=True  , watch_streak=True , bet=BetSettings(strategy=Strategy.SMART      , percentage=5 , stealth_mode=True,  percentage_gap=20 , max_points=1000   , filter_condition=FilterCondition(by=OutcomeKeys.TOTAL_USERS,      where=Condition.LTE, value=800 ) ) )),
-    Streamer("1Adrianaries1", settings=StreamerSettings(make_predictions=True , follow_raid=True  , claim_drops=True ,                     bet=BetSettings(strategy=Strategy.SMART , percentage=5 , stealth_mode=True, percentage_gap=20 , max_points=1500  , filter_condition=FilterCondition(by=OutcomeKeys.TOTAL_USERS,     where=Condition.LTE, value=800 ) ) )),
-    Streamer("Alois_NL", settings=StreamerSettings(make_predictions=True  , follow_raid=True ,                     watch_streak=True , bet=BetSettings(strategy=Strategy.SMART      , percentage=5 , stealth_mode=False, percentage_gap=20 , max_points=2000 , filter_condition=FilterCondition(by=OutcomeKeys.TOTAL_USERS,             where=Condition.LTE,  value=800 ) ) ))
-
+    Streamer("1Adrianaries1", settings=StreamerSettings(make_predictions=True , follow_raid=True  , claim_drops=True ,                     bet=BetSettings(strategy=Strategy.SMART , percentage=5 , stealth_mode=True, percentage_gap=20 , max_points=1500  , filter_condition=FilterCondition(by=OutcomeKeys.TOTAL_USERS,     where=Condition.LTE, value=800 ) ) ))
 ]) 
 
 
