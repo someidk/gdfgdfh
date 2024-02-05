@@ -10,4 +10,3 @@ flask
 irc
 pandas
 pytz
-keep_replit_alive
